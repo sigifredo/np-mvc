@@ -11,7 +11,7 @@ RewriteRule ^.*$ - [NC,L]
 # allow proper resolution of the index.php file; it will work
 # in non-aliased environments as well, providing a safe, one-size 
 # fits all solution.
-RewriteCond %{REQUEST_URI} /page/[a-z]/[a-z]$
+RewriteCond %{REQUEST_URI} /page/[A-Za-z]/[A-Za-z]$
 RewriteRule ^page/([A-Za-z])/([A-Za-z])$ index.php?controller=$1&action=$2 [NC,L]
 RewriteCond %{REQUEST_URI} /[A-Za-z]$
-RewriteRule ^([a-z])$ index.php?company=$1 [NC,L]
+RewriteRule ^([A-Za-z])$ index.php?company=$1 [NC,L]
