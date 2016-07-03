@@ -2,13 +2,15 @@
 
 function getRequest()
 {
-    $request = explode('/', str_replace(getenv('REDIRECT_BASE'), '', getenv('REQUEST_URI')));
-    $size = count($request);
-
-    if ($size === 0)
-        return (object) array ('controller' => 'IndexController', 'action' => 'indexAction');
-    else if ($size === 2)
-        return (object) array ('controller' => ucwords(strtolower($request[0])).'Controller', 'action' => strtolower($request[1]).'Action');
-    else
-        return (object) array ('error' => true);
+    if (isset($_GET['company']) && !isset($_GET['controller']))
+    {
+        return (object) array ('controller' => 'CompanyController', 'action' => 'profileAction');
+    }
+    else if (!isset($_GET['company']))
+    {
+        if (isset($_GET['controller']))
+            return (object) array ('controller' => ucwords(strtolower($_GET['controller'])).'Controller', 'action' => strtolower($_GET['action']).'Action');
+        else
+            return (object) array ('controller' => 'IndexController', 'action' => 'indexAction');
+    }
 }
