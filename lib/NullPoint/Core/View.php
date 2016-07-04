@@ -1,5 +1,7 @@
 <?php
 
+namespace NullPoint\Core;
+
 class View
 {
     public function show($controller, $action, $vars = array ())

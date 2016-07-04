@@ -21,7 +21,7 @@ if (is_file($controllerPath))
     if (is_callable(array($controller, $action)))
     {
         $cntrllr = new $controller();
-        $view = new View();
+        $view = new \NullPoint\Core\View();
         $view->show($request->controller, $request->action, $cntrllr->$action());
     }
     else
