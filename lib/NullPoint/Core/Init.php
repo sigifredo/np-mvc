@@ -7,7 +7,7 @@ function getRequest()
     else if (!isset($_GET['company']))
     {
         if (isset($_GET['controller']))
-            return (object) array ('controller' => strtolower($_GET['controller']), 'action' => strtolower($_GET['action']));
+            return (object) array ('controller' => $_GET['controller'], 'action' => $_GET['action']);
         else
             return (object) array ('controller' => 'index', 'action' => 'index');
     }
