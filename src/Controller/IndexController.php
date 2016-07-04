@@ -6,6 +6,6 @@ class IndexController
 {
     public function indexAction()
     {
-        return array ('a');
+        return array ('a' => 1);
     }
 }

@@ -3,12 +3,12 @@
 function getRequest()
 {
     if (isset($_GET['company']) && !isset($_GET['controller']))
-        return (object) array ('controller' => 'CompanyController', 'action' => 'profileAction');
+        return (object) array ('controller' => 'company', 'action' => 'profile');
     else if (!isset($_GET['company']))
     {
         if (isset($_GET['controller']))
-            return (object) array ('controller' => ucwords(strtolower($_GET['controller'])).'Controller', 'action' => strtolower($_GET['action']).'Action');
+            return (object) array ('controller' => strtolower($_GET['controller']), 'action' => strtolower($_GET['action']));
         else
-            return (object) array ('controller' => 'IndexController', 'action' => 'indexAction');
+            return (object) array ('controller' => 'index', 'action' => 'index');
     }
 }

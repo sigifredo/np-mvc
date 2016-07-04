@@ -6,21 +6,23 @@
 chdir(dirname(__DIR__));
 
 require 'lib/NullPoint/Core/Init.php';
+require 'lib/NullPoint/Core/View.php';
 
 $request = getRequest();
+$controller = ucwords($request->controller).'Controller';
+$action = $request->action.'Action';
 
-$controllerPath = 'src/Controller/'.$request->controller.'.php';
+$controllerPath = 'src/Controller/'.$controller.'.php';
 
 if (is_file($controllerPath))
 {
     require $controllerPath;
 
-    if (is_callable(array($request->controller, $request->action)))
+    if (is_callable(array($controller, $action)))
     {
-        $controller = $request->controller;
-        $action = $request->action;
         $cntrllr = new $controller();
-        echo json_encode($cntrllr->$action());
+        $view = new View();
+        $view->show($request->controller, $request->action, $cntrllr->$action());
     }
     else
     {
