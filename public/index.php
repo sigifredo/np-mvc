@@ -1,6 +1,6 @@
 <?php
 
-header('Content-Type: application/json');
+# header('Content-Type: application/json');
 # header('Content-Type: text/plain');
 
 chdir(dirname(__DIR__));
@@ -17,6 +17,8 @@ if (is_file($controllerPath))
 
     if (is_callable(array($request->controller, $request->action)))
     {
+        $controller = $request->controller;
+        $action = $request->action;
         $cntrllr = new $controller();
         echo json_encode($cntrllr->$action());
     }
